@@ -22,7 +22,7 @@ class SpellActivity : AppCompatActivity() {
         binding = ActivitySpellBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
 
         viewModel = ViewModelProvider(this).get(SpellViewModel::class.java)

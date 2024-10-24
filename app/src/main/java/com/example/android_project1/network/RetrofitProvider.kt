@@ -9,7 +9,7 @@ class RetrofitProvider {
 
     val retrofit by lazy { getRetrofitProvider() }
 
-    fun getRetrofitProvider() : Retrofit {
+    private fun getRetrofitProvider() : Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))

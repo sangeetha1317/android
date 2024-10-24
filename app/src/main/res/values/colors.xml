@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_gray">#555555</color>
+    <color name="backgroundColor">#FFFFFF</color> <!-- White background for the main layout -->
+    <color name="titleColor">#1E1E1E</color> <!-- Dark color for titles -->
+    <color name="textPrimary">#212121</color> <!-- Primary text color -->
+    <color name="textSecondary">#757575</color> <!-- Secondary text color -->
 </resources>
