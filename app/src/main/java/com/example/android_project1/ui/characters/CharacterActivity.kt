@@ -39,7 +39,7 @@ class CharacterActivity : AppCompatActivity() {
         binding.rv4.adapter = adapter
         binding.rv4.layoutManager = LinearLayoutManager(this)
 
-        binding.toolbar.setTitle("Home")
+        binding.toolbar.setTitle("Characters")
 
         val repository = CharacterRepository()
         viewModel.getCharacters(RetrofitProvider().retrofit, repository)

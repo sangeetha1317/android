@@ -6,14 +6,18 @@ import com.example.android_project1.service.ApiService
 import retrofit2.Retrofit
 
 class SpellRepository : ISpellRepository {
-    override suspend fun getSpell(retrofit: Retrofit, spellLiveData: MutableLiveData<SpellModel>) {
+    override suspend fun getSpell(retrofit: Retrofit) : SpellModel {
         val spellService = retrofit.create(ApiService::class.java)
-        val spells = spellService.getSpells()
-        spellLiveData.value = spells.body()
+        val spellsResponse = spellService.getSpells()
+        if (spellsResponse.isSuccessful){
+            return spellsResponse.body() ?: throw Exception("Response body is null")
+        } else {
+            throw Exception("${spellsResponse.code()}")
+        }
+        }
     }
 
-}
 
 interface ISpellRepository{
-    suspend fun getSpell(retrofit: Retrofit, spellLiveData: MutableLiveData<SpellModel>)
+    suspend fun getSpell(retrofit: Retrofit) : SpellModel
 }

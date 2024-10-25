@@ -1,6 +1,9 @@
 package com.example.android_project1.ui.spell
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -37,13 +40,27 @@ class SpellActivity : AppCompatActivity() {
 
         getSpells()
         getSpellsFromLiveData()
-
-
     }
 
     private fun getSpellsFromLiveData() {
         viewModel.spellLiveData.observe(this, Observer {
-            adapter.updateSpellsList(it)
+            when (it) {
+                is SpellState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.errorText.visibility = View.GONE
+                }
+                is SpellState.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
+                    adapter.updateSpellsList(it.spells)
+
+                }
+                is SpellState.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = it.message
+                }
+            }
         })
     }
 

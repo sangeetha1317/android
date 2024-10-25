@@ -31,7 +31,7 @@ class BooksActivity : AppCompatActivity() {
         binding.rvId.adapter = adapter
         binding.rvId.layoutManager = LinearLayoutManager(this)
 
-        binding.toolbar.setTitle("Home")
+        binding.toolbar.setTitle("Books")
 
         val repository = BookRepository()
         viewModel.getBooks(RetrofitProvider().retrofit, repository)
