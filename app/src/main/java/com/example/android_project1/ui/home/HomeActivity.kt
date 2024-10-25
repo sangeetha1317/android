@@ -10,6 +10,7 @@ import com.example.android_project1.R
 import com.example.android_project1.databinding.ActivityAboutBinding
 import com.example.android_project1.databinding.ActivityHomeBinding
 import com.example.android_project1.ui.books.BooksActivity
+import com.example.android_project1.ui.characters.CharacterActivity
 import com.example.android_project1.ui.spell.SpellActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -30,7 +31,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.charId.setOnClickListener {
-
+            val intent = Intent(this, CharacterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
